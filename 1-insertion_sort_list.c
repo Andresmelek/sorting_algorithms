@@ -8,12 +8,11 @@
 **/
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *tmp = *list, *current;
+	listint_t *tmp = *list;
 
 	while (tmp)
 	{
-		current = tmp;
-		while (current->prev && current->prev->n > tmp->n)
+		while ((tmp->prev != NULL) && tmp->prev->n > tmp->n)
 		{
 			tmp->prev->next = tmp->next;
 			if (tmp->next != NULL)
@@ -26,10 +25,6 @@ void insertion_sort_list(listint_t **list)
 			else
 				(tmp->prev->next = tmp);
 			print_list(*list);
-			if (current->prev != NULL)
-				current = current->prev;
-			else
-				break;
 		}
 		tmp = tmp->next;
 	}
