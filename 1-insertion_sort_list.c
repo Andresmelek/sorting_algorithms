@@ -8,12 +8,14 @@
 **/
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *tmp = *list;
+	listint_t *tmp;
 
-	if (list == NULL || *list == NULL || (*list)->next == NULL)
+	if (list == NULL || *list == NULL)
 		return;
+	tmp = *list;
 	while (tmp)
 	{
+		printf("Entre\n");
 		while ((tmp->prev != NULL) && tmp->prev->n > tmp->n)
 		{
 			tmp->prev->next = tmp->next;
