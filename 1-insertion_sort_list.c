@@ -15,7 +15,6 @@ void insertion_sort_list(listint_t **list)
 	tmp = *list;
 	while (tmp)
 	{
-		printf("Entre\n");
 		while ((tmp->prev != NULL) && tmp->prev->n > tmp->n)
 		{
 			tmp->prev->next = tmp->next;
