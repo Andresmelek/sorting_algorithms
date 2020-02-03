@@ -2,26 +2,25 @@
 #include <stdio.h>
 void insertion_sort_list(listint_t **list)
 {
-    listint_t *tmp = *list;
+	listint_t *tmp = *list;
 
-    tmp = tmp->next;
-    while (tmp)
-    {
-        if (tmp->prev->n > tmp->n)
-        {
-            tmp->prev->next = tmp->next;
-            tmp->next = tmp->prev;
-            tmp->prev = tmp->prev->prev;
-            tmp->prev->next->prev = tmp->next;
-            tmp->prev->next = tmp;
-            printf("%i\n", tmp->n);
-            print_list(*list);
-        }
-        tmp = tmp->next;
-    }
-        
+	tmp = tmp->next;
+	while (tmp)
+	{
+		while ((tmp->prev != NULL) && tmp->prev->n > tmp->n)
+		{
+			tmp->prev->next = tmp->next;
+			if (tmp->next != NULL)
+				tmp->next->prev = tmp->prev;
+			tmp->next = tmp->prev;
+			tmp->prev = tmp->prev->prev;
+			tmp->next->prev = tmp;
+			if (tmp->prev == NULL)
+				(*list = tmp);
+			else
+				(tmp->prev->next = tmp);
+			print_list(*list);
+		}
+	tmp = tmp->next;
+	}
 }
-
-
-
-
