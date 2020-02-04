@@ -10,50 +10,46 @@ void quick_sort(int *array, size_t size)
 {
 	int start, end, pindex;
 
-	start = array[0];
-	end = array[size - 1];
-
-	pindex = partition(array, 0, size);
-	printf("%i", array[0]);
-
+	start = 0;
+	end = size - 1;
+	sort(array, start, end, size);
+	
 }
 
-int partition(int *array, int start, int end)
-{
+int partition(int *array, int start, int end, size_t size)
+{	
 	int tmp = 0, aux = 0;
-	unsigned int j;
+	unsigned int j, i = start;
 	int pivot;
 
 	
 	pivot = array[end];
-	for (j = start; j < end; j++)
+	for (j = i; j < end; j++)
 	{
-		if (array[start] < pivot)
+		if (array[i] < pivot)
 		{
-			tmp = array[start];
-			array[start] = array[j];
+			i++;
+			tmp = array[i];
+			array[i] = array[j];
 			array[j] = tmp;
-			start++;
+			print_array(array, size);
 		}
 	}
-	aux = array[start];
-	array[start] = array[end];
+	aux = array[i];
+	array[i] = array[end];
 	array[end] = aux;
-	return start;
+	print_array(array, size);
 }
 
-void split(int *array, int pindex, int end)
+void sort(int *array, int start, int end, size_t size)
 {
-	unsigned int i, j;
-	int *bot = 0, *top = 0;
-
-	for (i = 0; i < pindex; i++)
-	{
-		bot[i] = array[i];
+	int pindex;
+	
+	if (start < end)
+	{	
+		pindex = partition(array, start, end, size);
+		sort(array, start, pindex - 1, size);
+		sort(array, pindex + 1, end, size);
 	}
-	for (j = pindex; j < end; j++)
-	{
-		top[j] = array[j];
-	}	
 }
 
