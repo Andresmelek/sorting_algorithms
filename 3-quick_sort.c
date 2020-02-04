@@ -22,23 +22,22 @@ int partition(int *array, int start, int end, size_t size)
 	unsigned int j, i = start;
 	int pivot;
 
-	
 	pivot = array[end];
 	for (j = i; j < end; j++)
 	{
 		if (array[i] < pivot)
 		{
-			i++;
 			tmp = array[i];
 			array[i] = array[j];
 			array[j] = tmp;
-			print_array(array, size);
+			i++;
 		}
 	}
 	aux = array[i];
 	array[i] = array[end];
 	array[end] = aux;
 	print_array(array, size);
+	return i;
 }
 
 void sort(int *array, int start, int end, size_t size)
