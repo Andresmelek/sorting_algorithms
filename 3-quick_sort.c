@@ -21,7 +21,7 @@ void quick_sort(int *array, size_t size)
  * @start: where the array starts
  * @end: where the array ends
  * @size: size of the array
- * return: returns index
+ * Return: returns index
  */
 int partition(int *array, int start, int end, size_t size)
 {
@@ -34,10 +34,13 @@ int partition(int *array, int start, int end, size_t size)
 	{
 		if (array[j] < pivot)
 		{
-			tmp = array[i];
-			array[i] = array[j];
-			array[j] = tmp;
-			i++;
+			if (i != j)
+			{
+				tmp = array[i];
+				array[i] = array[j];
+				array[j] = tmp;
+				i++;
+			}
 		}
 	}
 	aux = array[i];
