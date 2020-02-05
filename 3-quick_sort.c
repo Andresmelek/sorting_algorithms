@@ -34,13 +34,10 @@ int partition(int *array, int start, int end, size_t size)
 	{
 		if (array[j] < pivot)
 		{
-			if (i != j)
-			{
-				tmp = array[i];
-				array[i] = array[j];
-				array[j] = tmp;
-				i++;
-			}
+			tmp = array[i];
+			array[i] = array[j];
+			array[j] = tmp;
+			i++;
 		}
 	}
 	aux = array[i];
